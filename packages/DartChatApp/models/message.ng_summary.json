@@ -1,0 +1,13 @@
+{
+  "ngDeps": null,
+  "type": {
+    "Message": {
+      "class": "Identifier",
+      "name": "Message",
+      "moduleUrl": "asset:DartChatApp/lib/models/message.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

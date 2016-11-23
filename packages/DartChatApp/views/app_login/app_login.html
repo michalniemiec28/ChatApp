@@ -1,0 +1,4 @@
+<div id="input-container" class="card-block layout horizontal center">
+  <input type="text" class="form-control" placeholder="Nazwa użytkownika..." [(ngModel)]="inputText" (keyup.enter)="userLoggedEvent()">
+  <button class="btn btn-outline-primary" (click)="userLoggedEvent()">Zaloguj</button>
+</div>

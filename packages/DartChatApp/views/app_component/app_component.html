@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<app-login *ngIf="!fbService.isLogged"></app-login>
+
+<div *ngIf="fbService.isLogged" id="chat" class="card card-outline-primary flex layout vertical" style="overflow-y: hidden;">
+  <div class="msg-container flex layout vertical" style="overflow-y: auto;" vuScrollDown>
+    <!--show retrieved messages-->
+    <div *ngFor="let msg of fbService.messages" class="message layout horizontal">
+      <div>
+        <div class="name">{{msg.name}}</div>
+        <!--to do: DATETIME PIPE-->
+        <div class="datetime">{{msg.datetime | stringToDate | date:"short"}} </div>
+        <div *ngIf="msg.imageURL == null">{{msg.text}}</div>
+        <div *ngIf="msg.imageURL != null">
+          <a [href]="msg.imageURL" target="_blank">
+            <img [src]="msg.imageURL" class="message-image">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="input-container" class="card-block layout horizontal center">
+    <input type="text" class="form-control" placeholder="Wiadomość..." [(ngModel)]="inputText" (keyup.enter)="sendTextMessage()" vuHoldFocus>
+    <button class="btn btn-outline-primary" (click)="sendTextMessage()">Wyślij</button>
+
+    <input #mediaCapture type="file" accept="image/*,capture=camera">
+    <button class="btn btn-outline-primary"><i class="material-icons">image</i></button>
+  </div>
+</div>
